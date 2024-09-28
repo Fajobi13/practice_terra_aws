@@ -9,14 +9,12 @@ module "eks" {
   cluster_version = "1.30"
 
   cluster_endpoint_public_access = true
-
   cluster_addons = {
     coredns                = {}
     eks-pod-identity-agent = {}
     kube-proxy             = {}
     vpc-cni                = {}
   }
-
 
   vpc_id     = module.dlick-vpc.vpc_id
   subnet_ids = module.dlick-vpc.private_subnets
@@ -26,7 +24,6 @@ module "eks" {
     Application = "dlick"
     Terraform   = "true"
   }
-
   eks_managed_node_groups = {
     dev = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
