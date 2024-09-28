@@ -10,6 +10,13 @@ module "eks" {
 
   cluster_endpoint_public_access = true
 
+  cluster_addons = {
+    coredns                = {}
+    eks-pod-identity-agent = {}
+    kube-proxy             = {}
+    vpc-cni                = {}
+  }
+
 
   vpc_id     = module.dlick-vpc.vpc_id
   subnet_ids = module.dlick-vpc.private_subnets
